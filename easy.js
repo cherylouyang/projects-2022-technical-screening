@@ -32,7 +32,35 @@ var assert = require("assert")
 
 const altNumbers = (numArray) => {
     // TODO: COMPLETE THIS FUNCTION
-    return [];
+    const posArray = []
+    const negArray = []
+    numArray.forEach(separateElems);
+
+    function separateElems(elem) {
+        if (elem >= 0) {
+            posArray.push(elem)
+        } else {
+            negArray.push(elem)
+        }
+    }
+
+    const resArray = []
+    if (posArray.length >= negArray.length) {
+        sortAlternate(posArray, negArray)
+    } else {
+        sortAlternate(negArray, posArray)
+    }
+
+    function sortAlternate(array1, array2) {
+        for(let i = 0; i < array1.length; i++) {
+            resArray.push(array1[i])
+            if (i < array2.length) {
+                resArray.push(array2[i])
+            }
+        }
+    }
+
+    return resArray;
 }
 
 module.exports = { altNumbers } // Do not modify this line
